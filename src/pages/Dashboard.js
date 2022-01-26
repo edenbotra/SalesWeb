@@ -29,20 +29,23 @@ class Dashboard extends React.Component {
     render() {
         return (
             <div style={{textAlign:"center", padding:"20px", marginLeft:"0px", marginRight:"30px",
-                backgroundColor:"white", height:"50vh", width:"100%",
+                backgroundColor:"white", height:"auto", width:"100%",
                 borderRadius:"10px", boxShadow:"5px 5px 5px grey"}}>
                 <pre><h3 className="headline
                 "> DASHBOARD PAGE  </h3> </pre>
 
-                {
+                <div style={{  display:"flex", flexWrap:"wrap"}}>
+                    {
 
-                    this.state.mySales.map(sale => {
-                        return (
-                            <Sale sale = {sale}/>
-                        )
-                    })
 
-                }
+                        this.state.mySales.map(sale => {
+                            return (
+                                <Sale sale = {sale} bool={true}/>
+                            )
+                        })
+
+                    }
+                </div>
             </div>
         );
     }

@@ -15,7 +15,7 @@
   font-family: 'Roboto', sans-serif;
   font-size: 11px;
   text-transform: uppercase;
-  letter-spacing: 2.5px;
+  letter-spacing: 3px;
   font-weight: 500;
   color: #ffffff;
   background-color: #b484e1;
@@ -31,6 +31,15 @@
   box-shadow: 0 15px 20px rgb(211, 155, 213);
   color: #ffffff;
   transform: translateY(-7px);
+}
+.button:active {
+  background-color: #6adada;
+
+}
+
+.link:active {
+  background-color: #6adada;
+
 }
 
 
@@ -131,7 +140,6 @@ body {
   letter-spacing: 1px;
   background: rgba(136, 126, 126, 0.04);
   padding: 10px 20px;
-  border: none;
   border-radius: 20px;
   outline: none;
   box-sizing: border-box;
@@ -155,7 +163,6 @@ form.form1 {
   letter-spacing: 1px;
   background: rgba(136, 126, 126, 0.04);
   padding: 10px 20px;
-  border: none;
   border-radius: 20px;
   outline: none;
   box-sizing: border-box;

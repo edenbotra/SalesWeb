@@ -5,14 +5,22 @@ import './App.css';
 
 
 class SideBar extends React.Component {
-
     state = {
         links: [
             {title: "Dashboard", path: "/dashboard"},
-            {title: "Shops", path: "/shops"},
-            {title: "Search", path: "/search"},
+            {title: "All Shops", path: "/shops"},
+            {title: "Look for Sale", path: "/search"},
             {title: "Setting", path: "/setting"},
         ]
+    }
+
+    componentDidMount() {
+        const cookies = new Cookies();
+        const ws = new WebSocket("ws://localhost:8989/stream?token=" + cookies.get("logged_in"));
+        ws.onmessage = (message) => {
+            const obj = JSON.parse(message.data);
+            alert(Object.keys(obj).toString() +  obj[Object.keys(obj).toString()])
+        }
     }
 
     logout = () => {
@@ -30,10 +38,9 @@ class SideBar extends React.Component {
                             return (
                                 <NavLink to={link.path}
                                          className={"link"}
-                                         activeClassName={"active"}
-                                >
+                                         activeClassName={"active"}>
                                     <div style={{marginBottom: "10px"}}>
-                                        <button  className='button'  >
+                                        <button className={"button"}>
                                             {link.title}
                                         </button>
                                     </div>

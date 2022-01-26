@@ -19,38 +19,39 @@ class Login extends React.Component  {
     onUsernameChange = (e) => {
         let username = e.target.value;
         this.setState({
-            username: username
+            username
         })
     }
 
     onPasswordChange = (e) => {
+        let password = e.target.value;
         this.setState({
-            password: e.target.value
+            password
         })
     }
 
 
     signUp = () => {
-        axios.get("http://localhost:8989/create-account", {
-            params: {
-                username: this.state.username,
-                password: this.state.password
-            }
-        })
+
+        // axios post
+        let data = new FormData();
+        data.append("username", this.state.username);
+        data.append("password", this.state.password);
+        axios.post("http://localhost:8989/create-account", data)
             .then((response) => {
                 if (response.data) {
                     this.setState({
                             response: "Your account has been created!"
-
-
                         }
                     )
                 } else {
 
                     this.setState({
                         showError: true,
-                        response: "This username is already taken"})
-                }})
+                        response: "This username is already taken"
+                    })
+                }
+            })
     }
 
 
@@ -122,9 +123,9 @@ class Login extends React.Component  {
                             className="sidebar_compose">
                         sign in
                     </Button>
-                    <p className="forgot" align="center">
+                    <h2 style={{margin:"30px", color:"#9866d5"}}>
                         all benefits in one place.
-                    </p>
+                    </h2>
                 </form>
                 {
                     this.state.response === "no user related to this phone number" || this.state.response === "wrong password" || this.state.response === "This username is already taken" ?

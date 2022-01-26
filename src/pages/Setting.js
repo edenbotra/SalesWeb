@@ -40,22 +40,22 @@ class Setting extends React.Component {
 
     handleChange = (event) => {
         const cookies = new Cookies()
+        let data = new FormData();
+        data.append("token", cookies.get("logged_in"));
+        data.append("orgId", event.target.id);
+
         // call axios to remove/add  use POST!
-        axios.get("http://localhost:8989/update-org", {
-            params: {
-                token : cookies.get("logged_in"),
-                orgId : parseInt(event.target.id)
-            }
-        }).then(response => {
-            this.getMyOrgs()
-        })
+        axios.post("http://localhost:8989/update-org",data)
+            .then(response => {
+                this.getMyOrgs()
+            })
     }
 
     render() {
         return (
 
             <div style={{textAlign:"center", padding:"20px", marginLeft:"0px", marginRight:"30px",
-                backgroundColor:"white", height:"50vh", width:"100%",
+                backgroundColor:"white", height:"auto", width:"100%",
                 borderRadius:"10px", boxShadow:"5px 5px 5px grey", display:"flow"}}>
                 <pre><h3 className="headline
                 "> SETTING PAGE  </h3> </pre>

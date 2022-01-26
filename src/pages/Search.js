@@ -28,27 +28,33 @@ class Search extends React.Component {
     render() {
         return (
 
-            <div style={{textAlign:"center", padding:"20px", marginLeft:"0px", marginRight:"30px",
-                backgroundColor:"white", height:"auto", width:"100%",
-                borderRadius:"10px", boxShadow:"5px 5px 5px grey", display:"flow"}}>
+            <div style={{
+                textAlign: "center", padding: "20px", marginLeft: "0px", marginRight: "30px",
+                backgroundColor: "white", height: "auto", width: "100%",
+                borderRadius: "10px", boxShadow: "5px 5px 5px grey"
+            }}>
                 <pre><h3 className="headline
                 "> SEARCH PAGE  </h3> </pre>
 
-                <div style={{marginBottom:"20px"}}>
-                    <input type={"text"} onChange={this.onTextChange} placeholder={"Search..."} value={this.state.text}/>
 
-                    <button onClick={this.search}> Search </button>
+                <div style={{marginBottom: "20px"}}>
+                    <input style={{fontSize: "15px", margin: "20px"}} type={"text"} onChange={this.onTextChange}
+                           placeholder={"Search..."} value={this.state.text}/>
+
+                    <button className={"button"} disabled={this.state.text.length === 0} onClick={this.search}> Search</button>
                 </div>
 
+                <div style={{display: "flex", flexWrap: "wrap"}}>
 
-                {
-                    this.state.sales.map(sale => {
-                        return (
-                            <Sale sale = {sale} />
-                        )
-                    })
-                }
+                    {
+                        this.state.sales.map(sale => {
+                            return (
+                                <Sale sale={sale} bool={true}/>
+                            )
+                        })
+                    }
 
+                </div>
             </div>
         );
     }
