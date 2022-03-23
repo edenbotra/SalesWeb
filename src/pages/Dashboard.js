@@ -8,7 +8,7 @@ class Dashboard extends React.Component {
     state = {
         mySales : [],
     }
-
+//
 
     componentDidMount() {
         const cookies = new Cookies();
